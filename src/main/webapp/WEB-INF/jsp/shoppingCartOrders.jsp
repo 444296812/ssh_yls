@@ -153,36 +153,47 @@
                          
                          <div class="shopping-list">
                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                             <tr>
-                               <td width="40%" align="center" height="55" name="ticketName">
-                                   <c:forEach var="ordersList" items="${ordersList}">
-                                   ${ordersList.ticketName}
-                               </c:forEach>
-                                   </td>
-                               <td width="30%" name="ticketPrice">
-                                   <c:forEach var="ordersList" items="${ordersList}">
-                                      ${ordersList.ticketPrice}
-                                   </c:forEach>
-                               </td>
-                               <td width="30%" name="ticketNum">
-                                   <c:forEach var="ordersList" items="${ordersList}">
-                                   *${ordersList.ticketNum}
-                               </c:forEach>
-                               </td>
-                             </tr>
                              <%--<tr>--%>
-                               <%--<td width="40%" align="center" height="55">大玉龙雪山景区联票 </td>--%>
-                               <%--<td width="30%">￥315.00</td>--%>
-                               <%--<td width="30%">*1</td>--%>
+                               <%--<td width="40%" align="center" height="55" name="ticketName">--%>
+                                   <%--<c:forEach var="ordersList" items="${ordersList}">--%>
+                                   <%--${ordersList.ticketName}--%>
+                               <%--</c:forEach>--%>
+                                   <%--</td>--%>
+                               <%--<td width="30%" name="ticketPrice">--%>
+                                   <%--<c:forEach var="ordersList" items="${ordersList}">--%>
+                                      <%--${ordersList.ticketPrice}--%>
+                                   <%--</c:forEach>--%>
+                               <%--</td>--%>
+                               <%--<td width="30%" name="ticketNum">--%>
+                                   <%--<c:forEach var="ordersList" items="${ordersList}">--%>
+                                   <%--*${ordersList.ticketNum}--%>
+                               <%--</c:forEach>--%>
+                               <%--</td>--%>
                              <%--</tr>--%>
+
+                                 <c:forEach var="ordersList" items="${ordersList}">
+                                 <tr>
+                                     <td width="40%" align="center" height="55" name="ticketName">
+                                             ${ordersList.ticketName}
+                                     </td>
+                                     <td width="30%" name="ticketPrice">
+                                             ${ordersList.ticketPrice}
+                                     </td>
+                                     <td width="30%" name="ticketNum">
+                                             *${ordersList.ticketNum}
+                                     </td>
+                                 </tr>
+                                 </c:forEach>
+
                            </table>
                          </div>
                          
                          <div class="shopping-btn">
                           <a href="javascript:"><input type="submit" value="提交订单" style="margin-top: 12px"/></a> <span>应付总额： <font name="ticketTotal">
-                             <c:forEach var="ordersList" items="${ordersList}">
-                                 ￥${ordersList.ticketTotal}
-                             </c:forEach>
+                             <%--<c:forEach var="ordersList" items="${ordersList}">--%>
+                                 <%--￥${ordersList.ticketTotal}--%>
+                             <%--</c:forEach>--%>
+                             ${total}
                          </font></span>
                          </div>
                        </form>

@@ -9,6 +9,7 @@ public class OrdersEntiy {
     private double ticketPrice;
     private int ticketNum;
     private double ticketTotal;
+    private double total;
 
     public OrdersEntiy() {
     }
@@ -19,6 +20,15 @@ public class OrdersEntiy {
         this.ticketPrice = ticketPrice;
         this.ticketNum = ticketNum;
         this.ticketTotal = ticketTotal;
+    }
+
+    public OrdersEntiy(int ticketId, String ticketName, double ticketPrice, int ticketNum, double ticketTotal, double total) {
+        this.ticketId = ticketId;
+        this.ticketName = ticketName;
+        this.ticketPrice = ticketPrice;
+        this.ticketNum = ticketNum;
+        this.ticketTotal = ticketTotal;
+        this.total = total;
     }
 
     public int getTicketId() {
@@ -59,5 +69,13 @@ public class OrdersEntiy {
 
     public void setTicketTotal(double ticketTotal) {
         this.ticketTotal = ticketTotal;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

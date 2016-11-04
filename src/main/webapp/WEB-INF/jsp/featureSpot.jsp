@@ -12,29 +12,50 @@
 <script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="../../js/room-flash.js"></script>
     <script type="application/javascript">
-        $(document).ready(function(){
-            //设置隐藏功能，点击加入购物车时，就隐藏，并且将数据加入到数据库
-//           $("#cart").click(function(){$("#cart").slideToggle("slow")});
-            $("#cart").click(function(){$("#cart").css("background-color","red")});
-       })
-        function addCart(x){
+//        $(document).ready(function(){
+//            //设置隐藏功能，点击加入购物车时，就隐藏，并且将数据加入到数据库
+////           $("#cart").click(function(){$("#cart").slideToggle("slow")});
+//            $("#cart").click(function(){$("#cart").css("background-color","red")});
+//       })
+//        function addCart(x){
+//
+//            //创建xmlHttp对象
+//            var xmlHttp = new XMLHttpRequest();
+//            //给xmlhttp绑定状态改变事件
+//            xmlHttp.onreadystatechange=function(){
+//                if(xmlHttp.readyState==4 && xmlHttp.status==200){
+//                    var result = xmlHttp.responseText;
+//                    //alert(result);
+//                }
+//            }
+//            var src="featureSpot?goods_id="+x;
+//            //设置请求路径
+//            xmlHttp.open("post",src,true);
+//            //发送请求
+//            xmlHttp.send();
+//
+//        }
 
-            //创建xmlHttp对象
-            var xmlHttp = new XMLHttpRequest();
-            //给xmlhttp绑定状态改变事件
-            xmlHttp.onreadystatechange=function(){
-                if(xmlHttp.readyState==4 && xmlHttp.status==200){
-                    var result = xmlHttp.responseText;
-                    //alert(result);
-                }
-            }
-            var src="featureSpot?goods_id="+x;
-            //设置请求路径
-            xmlHttp.open("post",src,true);
-            //发送请求
-            xmlHttp.send();
+function addCart(x){
+    //当双击购物车按钮就变为红色
+    $("#cart"+x).css("background-color","red")
 
+
+    //创建xmlHttp对象
+    var xmlHttp = new XMLHttpRequest();
+    //给xmlhttp绑定状态改变事件
+    xmlHttp.onreadystatechange=function(){
+        if(xmlHttp.readyState==4 && xmlHttp.status==200){
+            var result = xmlHttp.responseText;
+            //alert(result);
         }
+    }
+    var src="addCart?goods_id="+x;
+    //设置请求路径
+    xmlHttp.open("post",src,true);
+    //发送请求
+    xmlHttp.send();
+}
     </script>
 </head>
 
@@ -215,7 +236,9 @@
                                  <span>
                                              ${datafiles.goodsPrice}
                                  </span>
-                                         <a href="#" class="feature-r" id="cart" onclick="addCart(${datafiles.goodsID})">加入<br/>购物车</a>
+                                         <%--<a href="#" class="feature-r" id="cart" onclick="addCart(${datafiles.goodsID})">加入<br/>购物车</a>--%>
+                                        <%--每次生成唯一一个id--%>
+                                     <a href="#" class="feature-r" id="cart${datafiles.goodsID}" onclick="addCart(${datafiles.goodsID})">加入<br/>购物车</a>
                                          <%--<a href="ShoppingInformationServletGo?goods_name=${datafiles.goodsName}&goods_price=${datafiles.goodsPrice}" class="feature-l">立即<br/>购买</a>--%>
                                      <a href="ShoppingInformationServletGo?goods_name=${datafiles.goodsName}&goods_price=${datafiles.goodsPrice}" class="feature-l">立即<br/>购买</a>
                                  </div>

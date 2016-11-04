@@ -44,6 +44,14 @@ public class BaseDao<M> {
     }
 
 
+    //点击加入购物车，商品加入购物车表
+    public void addCart(M m) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.save(m);
+        session.getTransaction().commit();
+    }
+
     //购物车的界面
     public List<OrdersEntiy> findCart() {
         Session session=sessionFactory.openSession();
@@ -56,16 +64,44 @@ public class BaseDao<M> {
         return ordersEntiys;
     }
 
+
+      //购物车点击加
+        public void updateAdd(M m) {
+            Session session=sessionFactory.openSession();
+            session.beginTransaction();
+            session.update(m);
+            session.getTransaction().commit();
+    }
+
+     //购物车点击减
+     public void updateReduce(M m) {
+         Session session=sessionFactory.openSession();
+         session.beginTransaction();
+         session.update(m);
+         session.getTransaction().commit();
+     }
+
+
+    //购物车点击删除操作的时候在orders表中执行相应的删除功能
+    public void deleteOrders(M m) {
+        Session session=sessionFactory.openSession();
+        session.beginTransaction();
+        session.remove(m);
+        session.getTransaction().commit();
+    }
+
+
     //订单核算的界面
     public List<ListEntity> findList() {
         Session session=sessionFactory.openSession();
         session.beginTransaction();
         //利用hql查询出ylxs首页的所有数据
-        Query query=session.createQuery("from ListEntity");
+        Query query=session.createQuery("from OrdersEntiy");
         //然后将取出的数据存放到list集合
         List<ListEntity> listEntities=query.list();
         session.getTransaction().commit();
         return listEntities;
     }
+
 
 }

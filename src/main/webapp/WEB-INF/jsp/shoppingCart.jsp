@@ -18,7 +18,7 @@
 //                        alert("你已删除了此记录");
                     }
                 }
-                var url="cart?goods_id="+id;
+                var url="deleteOrders?goods_id="+id;
                 xmlHTML.open("post",url,true);
                 xmlHTML.send();
             }
@@ -32,7 +32,7 @@
                         //alert(result);
                     }
                 }
-                var url="ShoppingCartServletAdd?add_num="+num;
+                var url="updateAdd?add_id="+num;
                 xmlHTML.open("post",url,true);
                 xmlHTML.send();
             }
@@ -47,7 +47,7 @@
                         //alert(result);
                     }
                 }
-                var url="ShoppingCartServletReduce?reduce_num="+reduce;
+                var url="updateReduce?reduce_id="+reduce;
                 xmlHTML.open("post",url,true);
                 xmlHTML.send();
             }
@@ -232,7 +232,7 @@
                                      <td width="15%"></td>
                                      <%--<td width="15%"><span>-</span><input type="text" class="shopp-l"/><span>+</span></td>--%>
                                      <td width="15%">
-                                                 <span><a href="cart" onclick="reduce_num(${datafiles.ticketNum})">-</a></span><input type="text"class="shopp-l" value="${datafiles.ticketNum}"/><span><a href="cart" onclick="add_num(${datafiles.ticketNum})">+</a></span>
+                                                 <span><a href="cart" onclick="reduce_num(${datafiles.ticketId})">-</a></span><input type="text"class="shopp-l" value="${datafiles.ticketNum}"/><span><a href="cart" onclick="add_num(${datafiles.ticketId})">+</a></span>
                                                  <%--点击删除是传递一个id到ajax--%>
                                         </td>
                                          <td width="15%"><a href="cart" onclick="del(${datafiles.ticketId})">删除</a></td>
@@ -258,12 +258,10 @@
                           <a href="order">确认订单</a>
                              <%--<span>应付总额： <font>￥575.00</font></span>--%>
                              <span>应付总额： <font>
-                                 <c:forEach var="datafiles" items="${ordersList}">
-                                     <%--双重条件去重--%>
-                                     <c:if test="${datafiles.ticketId==1}">
-                                         ${datafiles.ticketTotal}
-                                     </c:if>
-                                 </c:forEach>
+                                 <%--<c:forEach var="datafiles" items="${ordersList}">--%>
+                                         <%--${datafiles.ticketTotal}--%>
+                                 <%--</c:forEach>--%>
+                                 ${total}
                              </font></span>
                          </div>
                          
