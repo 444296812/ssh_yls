@@ -11,6 +11,7 @@ public class Ylxs {
     private String main;//新闻内容
     private String img;//图片
     private String conlumnName;//栏目名
+    private ColumnEntity columnEntity;
 
 
     public Ylxs() {
@@ -80,5 +81,13 @@ public class Ylxs {
 
     public void setColumnID(int columnID) {
         this.columnID = columnID;
+    }
+
+    public ColumnEntity getColumnEntity() {
+        return columnEntity;
+    }
+
+    public void setColumnEntity(ColumnEntity columnEntity) {
+        this.columnEntity = columnEntity;
     }
 }

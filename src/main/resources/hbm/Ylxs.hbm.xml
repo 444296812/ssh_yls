@@ -13,7 +13,10 @@
         <property name="time"/>
         <property name="main" />
         <property name="img"/>
+        <property name="conlumnName"/>
         <property name="columnID" column="columns_id"/>
+
+        <many-to-one name="columnEntity" class="ColumnEntity" column="ylxs_id"  />
     </class>
 
     <!--商品首页-->
@@ -44,16 +47,17 @@
 
     <!--订单结算界面-->
     <!-- name 类名，table 表名 -->
-    <class name="ListEntity" table="list">
-        <id name="useID" column="useId">
+    <class name="ListEntity" table="lists">
+        <id name="useID" column="userId">
             <generator class="native" />
         </id>
-        <property name="useName" />
-        <property name="usePapers"/>
-        <property name="usePhone" />
+        <property name="useName" column="userName"/>
+        <property name="usePapers" column="userPapers"/>
+        <property name="usePhone"  column="userPhone"/>
         <property name="ticketName"/>
         <property name="ticketPrice"/>
         <property name="ticketNum" />
         <property name="ticketTotal"/>
+        <property name="orderNum"/>
     </class>
 </hibernate-mapping>

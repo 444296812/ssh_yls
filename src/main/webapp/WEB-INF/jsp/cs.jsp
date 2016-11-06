@@ -12,23 +12,11 @@
     <title>Title</title>
 </head>
 <body>
-hahahaha
-<br> haha
+
+恭喜您订票成功，请及时根据您的证件号和订单号到玉龙雪山景点取票。<br>
+请牢记你的订单号：${orderNum}
 <br>
-${dataFiles}
+<a href="index">进入玉龙雪山首页</a>
 
-
-<%--<%request.getAttribute("dataFiles");%>--%>
-大标题：
-<%--<li>--%>
-    <%--<c:forEach var="datafiles" items="${dataFiles}">--%>
-        <%--&lt;%&ndash;双重条件去重&ndash;%&gt;--%>
-        <%--<c:if test="${datafiles.id==19}">--%>
-            <%--<a href="attractions?attractions_id=${datafiles.id}">--%>
-                    <%--${datafiles.title}--%>
-            <%--</a>--%>
-        <%--</c:if>--%>
-    <%--</c:forEach>--%>
-<%--</li>--%>
 </body>
 </html>

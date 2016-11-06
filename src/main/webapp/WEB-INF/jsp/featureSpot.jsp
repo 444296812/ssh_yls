@@ -276,7 +276,7 @@ function addCart(x){
                      
                      <!--图片按钮 begin-->
                      <div class="scenic-btn">
-                       <a href="featureSpot"><img src="../../images/img-04.png"/></a>
+                         <a href="spot"><img src="../../images/img-04.png"/></a>
                        <a href="javascript:"><img src="../../images/img-05.png"/></a>
                      </div>
                      <!--图片按钮 end-->
@@ -322,7 +322,7 @@ function addCart(x){
                       
                        <div class="footer-info">
                         <span class="footer-mobel"><img src="../../images/footer-service-hotline.png"/></span>
-                        <span class="footer-mk">|<a href="javascript:">关于我们</a>|<a href="javascript:">协议条款</a>|<a href="javascript:">帮助中心</a>|</span>
+                        <span class="footer-mk">|<a href="javascript:">关于我们</a>|<a href="javascript:">协议条款</a>|<a href="page">后台管理</a>|</span>
                        </div>
                        
                        <div class="footer-share">

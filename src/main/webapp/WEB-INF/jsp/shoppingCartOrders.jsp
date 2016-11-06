@@ -8,6 +8,20 @@
 <link rel="stylesheet" type="text/css" href="../../css/css.css"/>
 <script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="../../js/room-flash.js"></script>
+    <%--<script type="application/javascript">--%>
+        <%--function submit(x){--%>
+            <%--$.ajax({--%>
+                <%--type:"post",--%>
+                <%--url:"example/settlementOrder",--%>
+                <%--data:JSON.stringify({"ticketId":x}),--%>
+                <%--contentType: "application/json; charset=utf-8",--%>
+                <%--dataType: "json",--%>
+                <%--success:function(sge){--%>
+                    <%--alert("ok")--%>
+                <%--}--%>
+            <%--})--%>
+        <%--}--%>
+    <%--</script>--%>
 </head>
 
 <body>
@@ -128,11 +142,11 @@
                          
                           <h2 class="shopping-title">取票人信息</h2>
                           
-                       <form action="ListServlet" method="post">
+                       <form action="settlementOrder" method="post">
                          <div class="shopping-input">
                           <dl>
                              <dt>取票人姓名</dt>
-                             <dd><input type="text" name="useName" class="shopp-check"/></dd>
+                             <dd><input type="text" name="userName" class="shopp-check"/></dd>
                           </dl>
                           <dl>
                              <dt>取票人证件</dt>
@@ -153,28 +167,15 @@
                          
                          <div class="shopping-list">
                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                             <%--<tr>--%>
-                               <%--<td width="40%" align="center" height="55" name="ticketName">--%>
-                                   <%--<c:forEach var="ordersList" items="${ordersList}">--%>
-                                   <%--${ordersList.ticketName}--%>
-                               <%--</c:forEach>--%>
-                                   <%--</td>--%>
-                               <%--<td width="30%" name="ticketPrice">--%>
-                                   <%--<c:forEach var="ordersList" items="${ordersList}">--%>
-                                      <%--${ordersList.ticketPrice}--%>
-                                   <%--</c:forEach>--%>
-                               <%--</td>--%>
-                               <%--<td width="30%" name="ticketNum">--%>
-                                   <%--<c:forEach var="ordersList" items="${ordersList}">--%>
-                                   <%--*${ordersList.ticketNum}--%>
-                               <%--</c:forEach>--%>
-                               <%--</td>--%>
-                             <%--</tr>--%>
 
                                  <c:forEach var="ordersList" items="${ordersList}">
                                  <tr>
+                                     <td width="20%" align="center" height="55" name="ticketId">
+                                         <%--id用隐藏域传--%>
+                                             ${ordersList.ticketId}
+                                     </td>
                                      <td width="40%" align="center" height="55" name="ticketName">
-                                             ${ordersList.ticketName}
+                                              ${ordersList.ticketName}
                                      </td>
                                      <td width="30%" name="ticketPrice">
                                              ${ordersList.ticketPrice}
@@ -190,9 +191,6 @@
                          
                          <div class="shopping-btn">
                           <a href="javascript:"><input type="submit" value="提交订单" style="margin-top: 12px"/></a> <span>应付总额： <font name="ticketTotal">
-                             <%--<c:forEach var="ordersList" items="${ordersList}">--%>
-                                 <%--￥${ordersList.ticketTotal}--%>
-                             <%--</c:forEach>--%>
                              ${total}
                          </font></span>
                          </div>
@@ -228,7 +226,7 @@
                      
                      <!--图片按钮 begin-->
                      <div class="scenic-btn">
-                       <a href="featureSpot"><img src="../../images/img-04.png"/></a>
+                         <a href="spot"><img src="../../images/img-04.png"/></a>
                        <a href="javascript:"><img src="../../images/img-05.png"/></a>
                      </div>
                      <!--图片按钮 end-->
@@ -274,7 +272,7 @@
                       
                        <div class="footer-info">
                         <span class="footer-mobel"><img src="../../images/footer-service-hotline.png"/></span>
-                        <span class="footer-mk">|<a href="javascript:">关于我们</a>|<a href="javascript:">协议条款</a>|<a href="javascript:">帮助中心</a>|</span>
+                        <span class="footer-mk">|<a href="javascript:">关于我们</a>|<a href="javascript:">协议条款</a>|<a href="page">后台管理</a>|</span>
                        </div>
                        
                        <div class="footer-share">

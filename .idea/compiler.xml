@@ -23,12 +23,18 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="spring_springmvc_habernate" />
+      </profile>
+      <profile default="false" name="Annotation profile for ssh" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
         <module name="ssh" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring_springmvc_habernate" target="1.5" />
-      <module name="ssh" target="1.5" />
+      <module name="ssh" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

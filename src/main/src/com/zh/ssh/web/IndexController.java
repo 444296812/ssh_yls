@@ -1,19 +1,18 @@
 package com.zh.ssh.web;
 
 
-import com.zh.ssh.entity.ListEntity;
-import com.zh.ssh.entity.OrdersEntiy;
-import com.zh.ssh.entity.ShopEntity;
-import com.zh.ssh.entity.Ylxs;
+import com.zh.ssh.entity.*;
 import com.zh.ssh.service.CartService;
 import com.zh.ssh.service.YlxsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 佛祖保佑       永无BUG
@@ -28,8 +27,10 @@ public class IndexController {
     public String getIndex(Model model){
         //这里取到dao里面的首页数据集合
         List<Ylxs> ylxsList=ylxsService.find();
+        List<ColumnEntity> columnEntityList=ylxsService.findColumn();
         //在将这些数据放在model里面
         model.addAttribute("dataFiles",ylxsList);
+        model.addAttribute("column",columnEntityList);
         return "index";
     }
 
@@ -124,8 +125,6 @@ public class IndexController {
     }
 
 
-
-
     //购物车增删改查页面---取数据
     @RequestMapping("/cart")
     public String crudCart(Model model){
@@ -167,5 +166,29 @@ public class IndexController {
         return "shoppingCartOrders";
     }
 
+    //订单核对结算页面,点击提交订单，提交成功，将用户的票务信息保存到数据库
+    @RequestMapping("/settlementOrder")
+    public String settlementOrder(Model model,String userName,String zhenJian,String phone){
+        ListEntity listEntity=new ListEntity();
+        List<OrdersEntiy> ordersEntiys=ylxsService.findCart();
+        //随机生成一个唯一的订单号,然后给用户
+        UUID uuid = UUID.randomUUID();
+        String orderNum="yls"+uuid;
+        model.addAttribute("orderNum",orderNum);
+        for (OrdersEntiy each:ordersEntiys) {
+                listEntity.setUseName(userName);
+                listEntity.setUsePapers(zhenJian);
+                listEntity.setUsePhone(phone);
+                //如果id和jsp传过来的id相等，则见id相关的数据直接从购物车表传到list表即可，就不在jsp在传过来了(没实现)
+                listEntity.setUseID(each.getTicketId());
+                listEntity.setTicketName(each.getTicketName());
+                listEntity.setTicketPrice(each.getTicketPrice());
+                listEntity.setTicketNum(each.getTicketNum());
+                listEntity.setTicketTotal(each.getTicketTotal());
+                listEntity.setOrderNum(orderNum);
+                cartService.settlementOrder(listEntity);
+            }
+        return "cs";
+    }
 
 }
